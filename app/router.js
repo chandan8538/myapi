@@ -4,10 +4,10 @@ import { selectController, insertController } from './controller/testcontroller.
 
 const router = new Router();
 
-const defaultRouter = combineRouters( router);
+const defaultRouter = combineRouters(router);
 
-//router.get('/match', selectController);
+router.post('/match', selectController);
 
-router.post('/createdata', insertController);
+//router.post('/createdata', insertController);
 
 export default defaultRouter;
