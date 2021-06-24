@@ -1,0 +1,8 @@
+node_modules/*
+.idea/
+logs/*
+yarn-error.log
+.env
+.DS_Store
+.history
+dist/*
