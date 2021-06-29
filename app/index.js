@@ -1,6 +1,6 @@
 import Koa from 'koa';
 
-import {applyMiddleware} from './server.js';
+import { applyMiddleware } from './server.js';
 
 const app = new Koa();
 

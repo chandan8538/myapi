@@ -11,7 +11,7 @@ import userAgent from 'koa-useragent';
 
 export const applyMiddleware = app => {
 
-    app.use(async (ctx, next) => {
+    app.use(async(ctx, next) => {
         try {
             await next()
         } catch (err) {
@@ -19,9 +19,9 @@ export const applyMiddleware = app => {
         }
     });
 
-    app.use(async (ctx, next) => {
-        
-        ctx.set('Access-Control-Allow-Origin', '*' );
+    app.use(async(ctx, next) => {
+
+        ctx.set('Access-Control-Allow-Origin', '*');
         ctx.set('Access-Control-Allow-Headers', '*');
         ctx.set('Access-Control-Allow-Methods', '*');
         // session.scope();
@@ -32,20 +32,20 @@ export const applyMiddleware = app => {
 
 
     app.use(koaBody({
-        multipart  : true,
-        urlencoded : true,
-        jsonLimit  : 50000000,
+        multipart: true,
+        urlencoded: true,
+        jsonLimit: 50000000,
     }));
 
     app.use(compress({
-        threshold : 1024,
-        flush     : zlib.constants.Z_SYNC_FLUSH,
+        threshold: 1024,
+        flush: zlib.constants.Z_SYNC_FLUSH,
     }));
 
     // Blanket Rate limiter
     const limiter = RateLimit.middleware({
-        interval : 10 * 60 * 1000, // 20 minutes
-        max      : 1000,
+        interval: 10 * 60 * 1000, // 20 minutes
+        max: 1000,
     });
 
 
@@ -57,7 +57,7 @@ export const applyMiddleware = app => {
     app.use(limiter); // Blanket app limit.
 
     // Fix for csrf.
-    app.use(async (ctx, next) => {
+    app.use(async(ctx, next) => {
         // console.log("3. CSRF:",ctx.request)
         const environment = process.env.NODE_ENV || 'dev';
         const browserIdentifier = 'mozilla';

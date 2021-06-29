@@ -50,7 +50,7 @@ export const selectLoginUser = async(mobile) => {
     console.log('from db', mobile);
     let query = `SELECT * FROM student_info WHERE mobile = '${mobile}'  `;
     try {
-        let resp = await client.query(query)
+        // let resp = await client.query(query)
         console.log(resp.rows);
         return { success: true, data: resp.rows };;
     } catch (e) {
